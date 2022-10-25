@@ -10,7 +10,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
         integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    
+
+    <style>
+        #results {
+            display: none;
+        }
+    </style>
+
 
 </head>
 
@@ -77,7 +83,29 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
         integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
+    <script>
 
+
+        document.querySelector('#tip-form').onchange = function () {
+
+            var bill = Number(document.getElementById('billTotal').value);
+            var tip = document.getElementById('tipInput').value;
+            document.getElementById('tipOutput').innerHTML = `${tip}%`;
+            var tipValue = bill * (tip / 100)
+            var finalBill = bill + tipValue
+            console.log(finalBill)
+            var tipAmount = document.querySelector('#tipAmount')
+            var totalBillWithTip = document.querySelector('#totalBillWithTip')
+
+            tipAmount.value = tipValue.toFixed(2);
+            totalBillWithTip.value = finalBill.toFixed(2);
+
+            //Show Results
+
+            document.getElementById('results').style.display = 'block'
+        }
+    </script>
 </body>
+
 
 </html>
